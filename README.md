@@ -24,4 +24,5 @@ gpio d o 72     # sets direction to out
 gpio d i 72     # sets direction to in
 gpio r 72       # reads from pin 72
 gpio w 1 72     # writes 1 to pin 72
+gpio u 72       # unexports pin 72
 ```
