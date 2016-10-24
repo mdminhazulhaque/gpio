@@ -1,0 +1,31 @@
+#!/bin/sh
+
+case $1 in
+    e|export)
+        echo $2 > /sys/class/gpio/export
+        ;;
+    d|direction)
+        echo $2 > /sys/class/gpio/gpio$3/direction
+        ;;
+    u|unexport)
+        echo $2 > /sys/class/gpio/export
+        ;;
+    r|read)
+        cat /sys/class/gpio/gpio$2/value
+        ;;
+    w|write)
+        echo $2 > /sys/class/gpio/gpio$3/value
+        ;;
+    *)
+        echo "Usage: `basename $0` [export|direction|read|write|unexport]"
+        echo ""
+        echo "       Param1    | Param2 | Param3"
+        echo "       ---------------------------"
+        echo "       export    | PIN    |"
+        echo "       unexport  | PIN    |"
+        echo "       direction | IN/OUT | PIN"
+        echo "       read      | PIN    |"
+        echo "       write     | VALUE  | PIN"
+        exit 1
+        ;;
+esac
